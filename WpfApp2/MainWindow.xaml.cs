@@ -67,5 +67,28 @@ namespace Kosarlabda
 
             tabla.ItemsSource = lista;
         }
+
+        // sorok színezése
+        private void tabla_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            Jatekos j = e.Row.Item as Jatekos;
+            if (j == null)
+            {
+                return;
+            }
+
+            if (j.HatekonysagiMutato < 20)
+            {
+                e.Row.Background = Brushes.LightCoral;
+            }
+            else if (j.HatekonysagiMutato >= 25)
+            {
+                e.Row.Background = Brushes.LightGreen;
+            }
+            else
+            {
+                e.Row.Background = Brushes.White;
+            }
+        }
     }
 }
